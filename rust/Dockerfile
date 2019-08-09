@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/average-group/community/gameserver-images/steamcmd:latest
+FROM averagegroup/steamcmd:latest
 LABEL maintainer="admin@average.group"
 
 ENV server_port=28015
