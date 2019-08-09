@@ -1,0 +1,1 @@
+# Average Steam Base Image
