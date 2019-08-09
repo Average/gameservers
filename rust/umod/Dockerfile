@@ -15,8 +15,8 @@ ENV rcon_password="YourPassword"
 ENV logfile=gamelog.txt
 
 WORKDIR /opt/rust
-RUN apt-get install -y zip unzip; \
-    curl https://github.com/theumod/uMod.Rust/releases/download/2.0.4262/Oxide.Rust.zip -o oxide.zip; \
+RUN apt-get install -y wget zip unzip; \
+    wget -nc -O oxide.zip https://github.com/theumod/uMod.Rust/releases/download/2.0.4262/Oxide.Rust.zip; \
     unzip -o oxide.zip;
 
 VOLUME [ "/opt/steamcmd", "/opt/rust/logs", "/opt/rust/server", "/opt/rust/oxide", "/opt/rust/RustDedicated_Data/Managed" ]
