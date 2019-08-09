@@ -15,7 +15,9 @@ ENV rcon_password="YourPassword"
 ENV logfile=gamelog.txt
 
 WORKDIR /opt/rust
-RUN wget -nc -O oxide.zip https://github.com/theumod/uMod.Rust/releases/download/2.0.4262/Oxide.Rust.zip && unzip -o oxide.zip
+RUN apt-get install -y zip unzip; \
+    curl https://github.com/theumod/uMod.Rust/releases/download/2.0.4262/Oxide.Rust.zip -o oxide.zip; \
+    unzip -o oxide.zip;
 
 VOLUME [ "/opt/steamcmd", "/opt/rust/logs", "/opt/rust/server", "/opt/rust/oxide", "/opt/rust/RustDedicated_Data/Managed" ]
 ENTRYPOINT [ "./RustDedicated", "-batchmode", "+server.port ${server_port}", "+server.tickrate ${server_tickrate}", "+server.hostname ${server_hostname}", "+server.identity ${server_identiy}", "+server.maxplayers ${server_maxplayers}", "+server.worldsize ${server_worldsize}", "+server.seed ${server_seed}", "+server.saveinterval ${server_saveinterval}", "+rcon.port ${rcon_port}", "+rcon.web ${rcon_web}", "+rcon.password ${rcon_password}", "+logfile ${logfile}" ]
